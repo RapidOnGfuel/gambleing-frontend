@@ -9,14 +9,10 @@ let dealerHiddenCard;
 // Initialize game
 async function initGame() {
     try {
-        // Use 6 decks for the game
         const deckResponse = await fetch(`${deckApiUrl}/new/shuffle/?deck_count=6`);
         const deckData = await deckResponse.json();
         if (!deckData.success) throw new Error('Failed to shuffle deck');
         deckId = deckData.deck_id;
-
-        await dealInitialCards();
-        updateScores();
     } catch (error) {
         console.error('Error initializing game:', error);
         document.getElementById('message').textContent = 'Error initializing game. Please try again later.';
@@ -27,8 +23,10 @@ async function initGame() {
 async function dealInitialCards() {
     try {
         await drawCard('player', 2);
-        await drawCard('dealer', 1, true); // Draw one card for the dealer, face down
-        await drawCard('dealer', 1);       // Draw one card for the dealer, face up
+        await drawCard('dealer', 1, true);
+        await drawCard('dealer', 1);
+        updateScores();
+        enableControls();
     } catch (error) {
         console.error('Error dealing cards:', error);
         document.getElementById('message').textContent = 'Error dealing cards. Please try again later.';
@@ -63,10 +61,11 @@ async function drawCard(target, count = 1, isDealerHidden = false) {
     }
 }
 
-// Render card image
+// Render card image with fade-in effect
 function renderCard(card, elementId) {
     const cardElement = document.createElement('img');
     cardElement.src = card.image;
+    cardElement.classList.add('visible');
     document.getElementById(elementId).appendChild(cardElement);
 }
 
@@ -107,7 +106,21 @@ function updateScores() {
     }
 }
 
+// Enable controls after dealing cards
+function enableControls() {
+    document.getElementById('hit').disabled = false;
+    document.getElementById('stand').disabled = false;
+    document.getElementById('double').disabled = false;
+    document.getElementById('fold').disabled = false;
+    document.getElementById('deal').style.display = 'none';
+}
+
 // Player actions
+document.getElementById('deal').addEventListener('click', async () => {
+    await initGame();
+    await dealInitialCards();
+});
+
 document.getElementById('hit').addEventListener('click', async () => {
     await drawCard('player');
     updateScores();
@@ -183,5 +196,7 @@ function disableControls() {
     document.getElementById('fold').disabled = true;
 }
 
-// Start the game
-initGame();
+// Start the game when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('deal').disabled = false;
+});
