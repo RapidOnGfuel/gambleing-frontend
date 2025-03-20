@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #006400;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.hand {
+    margin: 20px;
+    padding: 20px;
+    background-color: #2e8b57;
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 300px;
+}
+
+#dealer-hand {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+}
+
+#player-hand {
+    position: absolute;
+    bottom: 150px;
+    left: 50px;
+}
+
+#controls {
+    margin: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+img {
+    width: 100px;
+    height: auto;
+    margin: 5px;
+}
