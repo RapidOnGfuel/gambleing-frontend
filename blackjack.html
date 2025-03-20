@@ -3,58 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plinko Game</title>
-    <link rel="stylesheet" href="css/plinko.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="/css/blackjack.css">
 </head>
 <body>
-    <header>
-        <div class="logo">GamblePro - Plinko</div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="leaderboard.html">Leaderboard</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section class="game-info">
-            <h1>Plinko</h1>
-            <p>Current Points: <span id="points">100.00</span></p>
-            <div class="deposit-section">
-                <input type="number" id="deposit-amount" placeholder="Deposit Points" min="1">
-                <button onclick="depositPoints()">Deposit</button>
-            </div>
-            <div class="difficulty-buttons">
-                <button onclick="startGame('easy')">Easy</button>
-            </div>
-            <button id="developer-mode-button" onclick="toggleDeveloperMode()">Developer Mode</button>
-            <div id="developer-mode" style="display: none;">
-            <canvas id="ballDistributionChart" width="400" height="200"></canvas>
-            </div>
-            
-        </section>
-
-        <section class="plinko-board" id="plinko-board">
-            <!-- Plinko board will be generated here -->
-        </section>
-        
-
-        <button id="play-button" onclick="playPlinko()">Play</button>
-        <button id="autodrop-button" onclick="toggleAutodrop()">Autodrop</button>
-    </main>
-
-    <footer>
-        <p>&copy; 2025 GamblePro. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
-            <a href="#">Responsible Gambling</a>
+    <div id="game">
+        <h1>Blackjack</h1>
+        <div id="dealer-hand" class="hand">
+            <h2>Dealer's Hand</h2>
+            <div id="dealer-cards"></div>
+            <p id="dealer-score">Score: ?</p>
         </div>
-    </footer>
-
-    <script src="js/plinko.js"></script>
+        <div id="player-hand" class="hand">
+            <h2>Your Hand</h2>
+            <div id="player-cards"></div>
+            <p id="player-score">Score: 0</p>
+        </div>
+        <div id="controls">
+            <button id="deal">Deal Cards</button>
+            <button id="hit" disabled>Hit</button>
+            <button id="stand" disabled>Stand</button>
+            <button id="double" disabled>Double</button>
+            <button id="fold" disabled>Fold</button>
+        </div>
+        <p id="message"></p>
+    </div>
+    <script src="/js/blackjack.js"></script>
 </body>
 </html>
