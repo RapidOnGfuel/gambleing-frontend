@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gambling Site</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">GamblePro</div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Leaderboard</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Welcome to GamblePro</h1>
+            <p>Join the excitement and play your favorite games!</p>
+        </section>
+
+        <section class="leaderboard">
+            <h2>Top Players</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Username</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body">
+                    <!-- Leaderboard data will be inserted here -->
+                </tbody>
+            </table>
+        </section>
+
+        <section class="games">
+            <h2>Games Available</h2>
+            <div class="game-list">
+                <button onclick="location.href='plinko.html'">Plinko</button>
+                <button onclick="location.href='blackjack.html'">Blackjack</button>
+                <button onclick="location.href='poker.html'">Poker</button>
+                <button onclick="location.href='dice.html'">Dice</button>
+                <button onclick="location.href='pump.html'">Pump</button>
+                <button onclick="location.href='crash.html'">Crash</button>
+                <button onclick="location.href='roulette.html'">Roulette</button>
+                <button onclick="location.href='wheel.html'">Wheel</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 GamblePro. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Responsible Gambling</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
