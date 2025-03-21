@@ -13,7 +13,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Leaderboard</a></li>
-                <li><a href="#">Login</a></li>
+                <li><a href="#" id="login-link">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -63,6 +63,18 @@
             <a href="#">Responsible Gambling</a>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Login</h2>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="login">Login</button>
+            <button id="signup">Sign Up</button>
+        </div>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

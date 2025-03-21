@@ -23,16 +23,26 @@ nav ul {
 nav a {
     color: #ffffff;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #bbbbbb;
 }
 
 .hero {
     text-align: center;
     padding: 50px 20px;
     background-color: #282828;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .leaderboard, .games {
     padding: 20px;
+    background-color: #1f1f1f;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 table {
@@ -45,6 +55,11 @@ th, td {
     border: 1px solid #444;
     padding: 10px;
     text-align: center;
+    background-color: #282828;
+}
+
+th {
+    background-color: #333;
 }
 
 .game-list {
@@ -62,11 +77,12 @@ button {
     cursor: pointer;
     flex: 1 0 21%;
     text-align: center;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 button:hover {
     background-color: #555;
+    transform: scale(1.05);
 }
 
 footer {
@@ -79,4 +95,62 @@ footer {
     color: #ffffff;
     margin: 0 10px;
     text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #bbbbbb;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #1f1f1f;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+input[type="email"], input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+}
+
+input[type="email"]:focus, input[type="password"]:focus {
+    outline: none;
+    background-color: #444;
 }

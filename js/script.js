@@ -18,3 +18,24 @@ document.addEventListener('DOMContentLoaded', () => {
         leaderboardBody.appendChild(row);
     });
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const loginLink = document.getElementById('login-link');
+    const loginModal = document.getElementById('login-modal');
+    const closeModal = document.getElementById('close-modal');
+
+    loginLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginModal.style.display = 'block';
+    });
+
+    closeModal.addEventListener('click', () => {
+        loginModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (event) => {
+        if (event.target === loginModal) {
+            loginModal.style.display = 'none';
+        }
+    });
+});
