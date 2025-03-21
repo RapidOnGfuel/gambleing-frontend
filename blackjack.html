@@ -3,34 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blackjack with Alpine.js</title>
-    <link rel="stylesheet" href="css/blackjack.css">
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="/css/blackjack.css">
 </head>
 <body>
-    <div x-data="blackjackGame()" class="game">
+    <div id="game">
         <h1>Blackjack</h1>
         <div id="dealer-hand" class="hand">
             <h2>Dealer's Hand</h2>
-            <template x-for="card in dealerCards" :key="card.code">
-                <img :src="card.showback ? BACK_CARD : card.image" :alt="card.code">
-            </template>
-            <p>Score: <span x-text="dealerScore"></span></p>
+            <div id="dealer-cards"></div>
+            <p id="dealer-score">Score: ?</p>
         </div>
         <div id="player-hand" class="hand">
             <h2>Your Hand</h2>
-            <template x-for="card in playerCards" :key="card.code">
-                <img :src="card.image" :alt="card.code">
-            </template>
-            <p>Score: <span x-text="playerScore"></span></p>
+            <div id="player-cards"></div>
+            <p id="player-score">Score: 0</p>
         </div>
         <div id="controls">
-            <button x-show="!gameStarted" @click="startGame()">Deal Cards</button>
-            <button x-show="gameStarted && playerTurn" @click="hit()">Hit</button>
-            <button x-show="gameStarted && playerTurn" @click="stand()">Stand</button>
+            <button id="deal">Deal Cards</button>
+            <button id="hit" disabled>Hit</button>
+            <button id="stand" disabled>Stand</button>
+            <button id="double" disabled>Double</button>
+            <button id="fold" disabled>Fold</button>
         </div>
-        <p x-text="message"></p>
+        <p id="message"></p>
     </div>
-    <script src="js/blackjack.js"></script>
+    <script src="/js/blackjack.js"></script>
 </body>
 </html>
