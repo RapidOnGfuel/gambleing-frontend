@@ -32,6 +32,8 @@ main {
 
 .deposit-section {
     margin: 10px 0;
+    background-color: lightblue;
+    font-family: Brush Script MT
 }
 
 .deposit-section input {
