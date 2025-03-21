@@ -6,6 +6,7 @@
     <title>Plinko Game</title>
     <link rel="stylesheet" href="css/plinko.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header>
@@ -21,18 +22,28 @@
     <main>
         <section class="game-info">
             <h1>Plinko</h1>
-            <p>Current Points: <span id="points">100</span></p>
+            <p>Current Points: <span id="points">100.00</span></p>
+            <div class="deposit-section">
+                <input type="number" id="deposit-amount" placeholder="Deposit Points" min="1">
+                <button onclick="depositPoints()">Deposit</button>
+            </div>
             <div class="difficulty-buttons">
                 <button onclick="startGame('easy')">Easy</button>
             </div>
+            <button id="developer-mode-button" onclick="toggleDeveloperMode()">Developer Mode</button>
+            <div id="developer-mode" style="display: none;">
+            <canvas id="ballDistributionChart" width="400" height="200"></canvas>
+            </div>
+            
         </section>
 
         <section class="plinko-board" id="plinko-board">
-            
             <!-- Plinko board will be generated here -->
         </section>
+        
 
         <button id="play-button" onclick="playPlinko()">Play</button>
+        <button id="autodrop-button" onclick="toggleAutodrop()">Autodrop</button>
     </main>
 
     <footer>

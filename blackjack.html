@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack with Alpine.js</title>
+    <link rel="stylesheet" href="css/blackjack.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+</head>
+<body>
+    <div x-data="blackjackGame()" class="game">
+        <h1>Blackjack</h1>
+        <div id="dealer-hand" class="hand">
+            <h2>Dealer's Hand</h2>
+            <template x-for="card in dealerCards" :key="card.code">
+                <img :src="card.showback ? BACK_CARD : card.image" :alt="card.code">
+            </template>
+            <p>Score: <span x-text="dealerScore"></span></p>
+        </div>
+        <div id="player-hand" class="hand">
+            <h2>Your Hand</h2>
+            <template x-for="card in playerCards" :key="card.code">
+                <img :src="card.image" :alt="card.code">
+            </template>
+            <p>Score: <span x-text="playerScore"></span></p>
+        </div>
+        <div id="controls">
+            <button x-show="!gameStarted" @click="startGame()">Deal Cards</button>
+            <button x-show="gameStarted && playerTurn" @click="hit()">Hit</button>
+            <button x-show="gameStarted && playerTurn" @click="stand()">Stand</button>
+        </div>
+        <p x-text="message"></p>
+    </div>
+    <script src="js/blackjack.js"></script>
+</body>
+</html>

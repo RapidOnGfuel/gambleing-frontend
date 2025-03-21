@@ -30,6 +30,16 @@ main {
     text-align: center;
 }
 
+.deposit-section {
+    margin: 10px 0;
+}
+
+.deposit-section input {
+    width: 150px;
+    padding: 5px;
+    margin-right: 5px;
+}
+
 .difficulty-buttons button {
     margin: 5px;
     padding: 10px 20px;
@@ -39,20 +49,41 @@ main {
 .plinko-board {
     margin-top: 20px;
     position: relative;
-    height: 500px;
+    height: 415px; /* Ensure this matches the JavaScript slotY calculation */
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
     overflow: hidden;
     border: 2px solid #ccc;
     background-color: #f9f9f9;
 }
 
+.plinko-board div {
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1; /* Ensure text is above other elements */
+}
+
+.slot-text {
+    position: absolute;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.slot {
+    border: 1px solid #ff0000; /* Ensure slots are visible */
+    background-color: #f0f0f0;
+}
+
 .plinko-row {
     position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: 15px; /* Increased spacing */
+    margin-bottom: 15px;
 }
 
 .plinko-peg {
@@ -60,7 +91,7 @@ main {
     height: 10px;
     background-color: #555;
     border-radius: 50%;
-    margin: 0 20px; /* Increased spacing */
+    margin: 0 20px;
 }
 
 .plinko-slot {
@@ -75,7 +106,7 @@ main {
 .plinko-ball {
     background-color: red;
     border-radius: 50%;
-    width: 15px; /* Smaller ball */
+    width: 15px;
     height: 15px;
     position: absolute;
     top: 0;

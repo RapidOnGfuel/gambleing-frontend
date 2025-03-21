@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #006400; /* Dark green felt */
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+h1 {
+    margin: 20px 0;
+}
+
+.game {
+    text-align: center;
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #2e8b57; /* Lighter green for the table area */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.hand {
+    margin: 20px;
+    padding: 10px;
+    background-color: #228B22; /* Slightly different green for card areas */
+    border-radius: 10px;
+    display: inline-block;
+    min-width: 300px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+img {
+    width: 80px;
+    height: auto;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+
+#controls {
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+button:disabled {
+    background-color: #9E9E9E; /* Gray for disabled state */
+    cursor: not-allowed;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 18px;
+}
