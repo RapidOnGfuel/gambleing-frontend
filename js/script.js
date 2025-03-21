@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Populate the leaderboard
     const leaderboardData = [
         { rank: 1, username: 'User123', balance: '$10,000' },
         { rank: 2, username: 'Gamer456', balance: '$9,500' },
@@ -17,9 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         leaderboardBody.appendChild(row);
     });
-});
 
-document.addEventListener('DOMContentLoaded', () => {
+    // Handle login modal
     const loginLink = document.getElementById('login-link');
     const loginModal = document.getElementById('login-modal');
     const closeModal = document.getElementById('close-modal');
