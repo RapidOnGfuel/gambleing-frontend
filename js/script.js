@@ -38,4 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
             loginModal.style.display = 'none';
         }
     });
+
+    // Handle login button
+    const loginButton = document.getElementById('login');
+    loginButton.addEventListener('click', () => {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        console.log('Logging in with:', email, password);
+        
+        // Add your authentication logic here
+
+        // Close the modal after login
+        loginModal.style.display = 'none';
+    });
 });
