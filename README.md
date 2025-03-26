@@ -13,4 +13,6 @@ You can either go to the [Github Pages](https://rapidongfuel.github.io/gambleing
 ```git
 gh repo clone RapidOnGfuel/gambleing-frontend
 ```
-Then go to where you installed it and open index.html
+Then go to where you installed it and open *index.html*
+
+# Happy Gambling!
