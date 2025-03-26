@@ -1,4 +1,4 @@
-let points = parseFloat(localStorage.getItem('plinkoPoints')) || 100.00;
+let points = parseFloat(localStorage.getItem('balance')) || 1000.00;
 document.getElementById('points').textContent = points.toFixed(2);
 
 let depositedPoints = 0;
@@ -43,6 +43,7 @@ function depositPoints() {
         depositedPoints = depositValue;
         points -= depositValue;
         document.getElementById('points').textContent = points.toFixed(2);
+        localStorage.setItem('balance', points.toFixed(2)); // Update balance in localStorage
         depositInput.value = ''; // Clear input after deposit
     } else {
         alert("Invalid deposit amount. Ensure it is within your balance.");
@@ -138,7 +139,7 @@ function createBall() {
                 const winnings = (depositedPoints * multiplier).toFixed(2);
                 points += parseFloat(winnings);
                 document.getElementById('points').textContent = points.toFixed(2);
-                localStorage.setItem('plinkoPoints', points.toFixed(2));
+                localStorage.setItem('balance', points.toFixed(2)); // Update balance in localStorage
                 World.remove(world, ball);
 
                 // Update ball distribution
@@ -170,6 +171,7 @@ function playPlinko() {
     if (depositedPoints > 0 && depositedPoints <= points) {
         points -= depositedPoints; // Deduct the deposit amount each time
         document.getElementById('points').textContent = points.toFixed(2);
+        localStorage.setItem('balance', points.toFixed(2)); // Update balance in localStorage
         createBall();
         if (!engineStarted) {
             Engine.run(engine);

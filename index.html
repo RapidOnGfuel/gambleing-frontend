@@ -68,14 +68,30 @@
     <div id="login-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close" id="close-modal">&times;</span>
-            <h2>Login</h2>
+            <h2>Login / Sign Up</h2>
+            <input type="text" id="username" placeholder="Username" required>
             <input type="email" id="email" placeholder="Email" required>
             <input type="password" id="password" placeholder="Password" required>
+            <div id="error-message" style="color: red; display: none;"></div>
             <button id="login">Login</button>
             <button id="signup">Sign Up</button>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- Changelog Popup -->
+<div id="changelog-popup" class="popup">
+    <div class="popup-content">
+        <span class="close" id="close-changelog">&times;</span>
+        <h2>Changelog</h2>
+        <div id="changelog-content">
+            <ul>
+                <li>Version 1.0: Initial release with exciting games!</li>
+                <li>Version 1.1: Added new features and improved performance.</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <script type="module" src="js/script.js"></script>
 </body>
 </html>

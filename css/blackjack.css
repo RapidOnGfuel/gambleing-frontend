@@ -6,9 +6,34 @@ body {
     padding: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000; /* Black menu bar */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #bbbbbb;
 }
 
 h1 {
@@ -23,6 +48,11 @@ h1 {
     border-radius: 15px;
     background-color: #2e8b57; /* Lighter green for the table area */
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+#balance-display {
+    margin: 10px 0;
+    font-size: 18px;
 }
 
 .hand {
@@ -43,12 +73,25 @@ img {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-
 #controls {
     margin: 20px;
     display: flex;
     justify-content: center;
     gap: 10px;
+    align-items: center;
+}
+
+input[type="number"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 120px;
+    margin-right: 10px;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #4CAF50;
 }
 
 button {

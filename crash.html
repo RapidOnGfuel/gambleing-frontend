@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crash Game</title>
+    <link rel="stylesheet" href="css/crash.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Game O' Odds</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Leaderboard</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="game-container">
+            <div id="rocket-animation"></div>
+            <div id="multiplier-display">1.00x</div>
+            <div id="crash-message" style="display: none; color: red;">Crashed!</div>
+        </div>
+        <div id="controls-container">
+            <div id="balance-display">Balance: 1000.00</div>
+            <input type="number" id="bet-input" placeholder="Enter Bet Amount" min="1">
+            <input type="number" id="auto-cashout-input" placeholder="Auto Cash Out Multiplier" min="1" step="0.01">
+            <button id="start-button">Start</button>
+            <button id="cashout-button" disabled>Cash Out</button>
+            <button id="poor-button" disabled>I'm Poor</button>
+        </div>
+        <button id="reset-button">Reset</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Game O' Odds. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Responsible Gambling</a>
+        </div>
+    </footer>
+
+    <script src="js/crash.js"></script>
+</body>
+</html>

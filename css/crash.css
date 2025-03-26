@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff; /* White main background */
+    color: #000000; /* Black text color for contrast */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000000; /* Black menu bar */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #bbbbbb;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: calc(100vh - 60px);
+    padding: 20px;
+}
+
+#game-container {
+    flex-grow: 1;
+    text-align: center;
+    position: relative;
+}
+
+#rocket-animation {
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/rfly.png'); /* Initial rocket flying image */
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: background-image 0.3s ease;
+    animation: rocketFly linear infinite;
+    animation-duration: 5s; /* Adjust duration as needed */
+}
+
+@keyframes rocketFly {
+    0% { bottom: 0; }
+    100% { bottom: 80%; }
+}
+
+#multiplier-display {
+    font-size: 48px;
+    margin-top: 20px;
+    color: #333;
+}
+
+#controls-container {
+    width: 200px;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#balance-display {
+    margin-bottom: 10px;
+}
+
+input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+#poor-button {
+    background-color: #28a745;
+}
+
+#poor-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+#reset-button {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    font-size: 12px;
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.2; /* Make it less visible */
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #000000; /* Black footer */
+    color: #ffffff;
+}
+
+.footer-links a {
+    color: #ffffff;
+    margin: 0 10px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #bbbbbb;
+}

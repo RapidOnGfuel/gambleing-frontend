@@ -11,8 +11,15 @@ function blackjackGame() {
         gameStarted: false,
         playerTurn: true,
         message: 'Click "Deal Cards" to start the game.',
-        
+        betAmount: 0,
+        points: parseFloat(localStorage.getItem('balance')) || 1000.00,
+
         async startGame() {
+            if (this.betAmount <= 0 || this.betAmount > this.points) {
+                this.message = "Invalid bet amount.";
+                return;
+            }
+            
             try {
                 const deckResponse = await fetch(`${deckApiUrl}/new/shuffle/?deck_count=6`);
                 const deckData = await deckResponse.json();
@@ -20,6 +27,8 @@ function blackjackGame() {
                 this.gameStarted = true;
                 this.playerTurn = true;
                 this.message = "Game started! Your turn.";
+                this.points -= this.betAmount;
+                this.updateBalance();
                 await this.dealInitialCards();
             } catch (error) {
                 console.error('Error starting game:', error);
@@ -130,12 +139,27 @@ function blackjackGame() {
         checkOutcome() {
             if (this.dealerScore > 21) {
                 this.message = "Dealer busted! You win!";
+                this.points += this.betAmount * 2;
             } else if (this.dealerScore >= this.playerScore) {
                 this.message = "Dealer wins!";
             } else {
                 this.message = "You win!";
+                this.points += this.betAmount * 2;
             }
+            this.updateBalance();
             this.gameStarted = false;
+        },
+
+        updateBalance() {
+            localStorage.setItem('balance', this.points.toFixed(2));
+        },
+
+        depositPoints() {
+            if (this.betAmount > 0 && this.betAmount <= this.points) {
+                this.message = `Deposited ${this.betAmount.toFixed(2)} points to bet.`;
+            } else {
+                this.message = "Invalid deposit amount.";
+            }
         }
     };
 }

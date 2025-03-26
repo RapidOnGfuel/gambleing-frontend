@@ -7,14 +7,120 @@
     <link rel="stylesheet" href="css/plinko.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.17.1/matter.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDE-XomlBR6Gp5URfxiuQ2eSqRFDN13moM",
+            authDomain: "skibidi-toliet.firebaseapp.com",
+            projectId: "skibidi-toliet",
+            storageBucket: "skibidi-toliet.firebasestorage.app",
+            messagingSenderId: "247341795485",
+            appId: "1:247341795485:web:97feceeb261513d75d6c74"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let points = 0;
+
+        async function loadPoints(userId) {
+            try {
+                const docRef = doc(db, 'users', userId);
+                const docSnap = await getDoc(docRef);
+
+                if (docSnap.exists()) {
+                    points = docSnap.data().points;
+                } else {
+                    points = 100.00;
+                    await savePoints(userId);
+                }
+                document.getElementById('points').textContent = points.toFixed(2);
+            } catch (error) {
+                console.error('Error loading points:', error);
+            }
+        }
+
+        async function savePoints(userId) {
+            try {
+                await setDoc(doc(db, 'users', userId), { points: points }, { merge: true });
+            } catch (error) {
+                console.error('Error saving points:', error);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('login-link');
+            const loginModal = document.getElementById('login-modal');
+            const closeModal = document.getElementById('close-modal');
+
+            loginLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loginModal.style.display = 'block';
+            });
+
+            closeModal.addEventListener('click', () => {
+                loginModal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target === loginModal) {
+                    loginModal.style.display = 'none';
+                }
+            });
+
+            const signupButton = document.getElementById('signup');
+            signupButton.addEventListener('click', () => {
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        updateProfile(user, { displayName: username });
+                        savePoints(user.uid);
+                        loginModal.style.display = 'none';
+                    })
+                    .catch((error) => {
+                        console.error('Error signing up:', error);
+                    });
+            });
+
+            const loginButton = document.getElementById('login');
+            loginButton.addEventListener('click', () => {
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        const user = userCredential.user;
+                        loadPoints(user.uid);
+                        loginModal.style.display = 'none';
+                    })
+                    .catch((error) => {
+                        console.error('Error logging in:', error);
+                    });
+            });
+        });
+
+        window.onload = function() {
+            initializeChart();
+        };
+    </script>
 </head>
 <body>
     <header>
-        <div class="logo">GamblePro - Plinko</div>
+        <div class="logo">Game O' Odds</div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="leaderboard.html">Leaderboard</a></li>
+                <li><a href="plinko.html">Plinko</a></li>
+                <li><a href="#" id="login-link">Login</a></li>
             </ul>
         </nav>
     </header>
@@ -32,28 +138,39 @@
             </div>
             <button id="developer-mode-button" onclick="toggleDeveloperMode()">Developer Mode</button>
             <div id="developer-mode" style="display: none;">
-            <canvas id="ballDistributionChart" width="400" height="200"></canvas>
+                <canvas id="ballDistributionChart" width="400" height="200"></canvas>
             </div>
-            
         </section>
 
         <section class="plinko-board" id="plinko-board">
             <!-- Plinko board will be generated here -->
         </section>
-        
 
         <button id="play-button" onclick="playPlinko()">Play</button>
         <button id="autodrop-button" onclick="toggleAutodrop()">Autodrop</button>
     </main>
 
     <footer>
-        <p>&copy; 2025 GamblePro. All rights reserved.</p>
+        <p>&copy; 2025 Game O' Odds. All rights reserved.</p>
         <div class="footer-links">
             <a href="#">Terms of Service</a>
             <a href="#">Privacy Policy</a>
             <a href="#">Responsible Gambling</a>
         </div>
     </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2>Login / Sign Up</h2>
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button id="login">Login</button>
+            <button id="signup">Sign Up</button>
+        </div>
+    </div>
 
     <script src="js/plinko.js"></script>
 </body>
