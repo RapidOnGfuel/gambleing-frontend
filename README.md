@@ -11,7 +11,7 @@ You can either go to the [Github Pages](https://rapidongfuel.github.io/gambleing
 
 # Locally:
 ```git
-gh repo clone RapidOnGfuel/gambleing-frontend
+git clone https://github.com/RapidOnGfuel/gambleing-frontend.git
 ```
 Then go to where you installed it and open *index.html*
 
